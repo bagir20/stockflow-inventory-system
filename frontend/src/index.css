@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scrollbar-gutter: stable;  /* ← reservasi space scrollbar selalu */
+}
+
+:root {
+  /* Backgrounds */
+  --bg:           #f4f6fb;
+  --surface:      #ffffff;
+  --surface-2:    #f8f9fc;
+  --surface-3:    #eef0f6;
+
+  /* Borders */
+  --border:       #e4e7f0;
+  --border-mid:   #d0d4e4;
+
+  /* Text */
+  --ink:          #0f1117;
+  --ink-mid:      #2d3348;
+  --ink-soft:     #6b7280;
+  --ink-muted:    #9ca3af;
+
+  /* Sidebar */
+  --sidebar-bg:        #5b21b6;
+  --sidebar-bg-dark:   #4c1d95;
+  --sidebar-hover:     rgba(255,255,255,0.10);
+  --sidebar-active:    rgba(255,255,255,0.18);
+  --sidebar-text:      rgba(255,255,255,0.70);
+  --sidebar-text-active: #ffffff;
+
+  /* Accent */
+  --accent:       #7c3aed;
+  --accent-soft:  rgba(124,58,237,0.10);
+  --accent-dark:  #6d28d9;
+
+  /* Gradients */
+  --grad-blue:    linear-gradient(135deg, #60a5fa, #2563eb);
+  --grad-purple:  linear-gradient(135deg, #a78bfa, #7c3aed);
+  --grad-green:   linear-gradient(135deg, #34d399, #059669);
+  --grad-orange:  linear-gradient(135deg, #fb923c, #ea580c);
+  --grad-pink:    linear-gradient(135deg, #f472b6, #db2777);
+  --grad-sidebar: linear-gradient(180deg, #6d28d9 0%, #4c1d95 100%);
+
+  /* Fonts */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Radius */
+  --r-sm: 8px;
+  --r:    12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+
+  /* Transition */
+  --t: 0.15s ease;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow:    0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+button { cursor: pointer; font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+a { text-decoration: none; color: inherit; }
+
+.btn-export {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all var(--t);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+.btn-export:hover {
+  background: var(--surface-3);
+  color: var(--ink);
+  border-color: var(--border-mid);
+}
