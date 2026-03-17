@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# environment variables (SANGAT PENTING)
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# build / dist
+dist/
+build/
+
+# coverage
+coverage/
+
+# optional
+.env.local
+.env.development
+.env.test
+.env.production
