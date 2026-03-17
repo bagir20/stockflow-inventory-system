@@ -9,6 +9,8 @@ import toast from 'react-hot-toast'
 import { exportToExcel } from '../utils/exportExcel'
 import { exportToPDF }   from '../utils/exportPDF'
 import { Download }      from 'lucide-react'
+import EmptyState from '../components/EmptyState'
+import ilNoData from '../assets/il-no-data.svg'
 
 const initForm = { product_id: '', quantity: '', note: '' }
 
@@ -353,13 +355,17 @@ const openScanner = (target) => {
                 </tr>
               </thead>
               <tbody>
-                {filteredHistory.length === 0 ? (
-                  <tr>
-                    <td colSpan={6}>
-                      <div className="table-empty">No movements found</div>
-                    </td>
-                  </tr>
-                ) : filteredHistory.map(h => (
+               {filteredHistory.length === 0 ? (
+              <tr>
+                <td colSpan={6}>
+                  <EmptyState
+                    image={ilNoData}
+                    title="No movements found"
+                    subtitle="Stock movements will appear here"
+                  />
+                </td>
+              </tr>
+            ) : filteredHistory.map(h => (
                   <tr key={h.id}>
                     <td style={{fontWeight:600, color:'var(--ink)'}}>{h.product_name}</td>
                     <td><span className={`type-badge ${h.type}`}>{h.type}</span></td>
@@ -384,8 +390,12 @@ const openScanner = (target) => {
             {/* Mobile */}
             <div className="history-mobile">
               {filteredHistory.length === 0 ? (
-                <div className="table-empty">No movements found</div>
-              ) : filteredHistory.map(h => (
+  <EmptyState
+    image={ilNoData}
+    title="No movements found"
+    subtitle="Stock movements will appear here"
+  />
+) : filteredHistory.map(h => (
                 <div key={h.id} className="history-card-m">
                   <div className="history-card-m-top">
                     <span className="history-card-m-name">{h.product_name}</span>

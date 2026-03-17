@@ -9,6 +9,8 @@ import PageTransition from '../components/PageTransition'
 import { exportToExcel } from '../utils/exportExcel'
 import { exportToPDF }   from '../utils/exportPDF'
 import { Download }      from 'lucide-react'
+import EmptyState from '../components/EmptyState'
+import ilEmpty from '../assets/il-empty.svg'
 
 const emptyForm = {
   sku: '', name: '', description: '',
@@ -239,16 +241,17 @@ const handleDelete = async () => {
                 </tr>
               </thead>
               <tbody>
-                {products.length === 0 ? (
-                  <tr>
-                    <td colSpan={7}>
-                      <div className="table-empty">
-                        <Package size={40} />
-                        <p>No products found</p>
-                      </div>
-                    </td>
-                  </tr>
-                ) : products.map(p => (
+             {products.length === 0 ? (
+              <tr>
+                <td colSpan={7}>
+                  <EmptyState
+                    image={ilEmpty}
+                    title="No products yet"
+                    subtitle="Add your first product to get started"
+                  />
+                </td>
+              </tr>
+            ) : products.map(p => (
                   <tr key={p.id}>
                     <td>
                       <p className="td-product-name">{p.name}</p>
@@ -291,11 +294,12 @@ const handleDelete = async () => {
 
             {/* Mobile */}
             <div className="products-mobile">
-              {products.length === 0 ? (
-                <div className="table-empty">
-                  <Package size={40} />
-                  <p>No products found</p>
-                </div>
+             {products.length === 0 ? (
+                <EmptyState
+                  image={ilEmpty}
+                  title="No products yet"
+                  subtitle="Add your first product to get started"
+                />
               ) : products.map(p => (
                 <div key={p.id} className="product-card-m">
                   <div className="product-card-m-top">

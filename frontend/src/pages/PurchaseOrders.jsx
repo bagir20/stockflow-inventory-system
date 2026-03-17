@@ -9,6 +9,8 @@ import './PurchaseOrders.css'
 import { exportToExcel } from '../utils/exportExcel'
 import { exportToPDF }   from '../utils/exportPDF'
 import { Download }      from 'lucide-react'
+import EmptyState from '../components/EmptyState'
+import ilEmptyCart from '../assets/il-empty-cart.svg'
 
 const emptyItem = { product_id: '', quantity: 1, unit_price: 0 }
 
@@ -228,16 +230,17 @@ const handleExportPDF = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.length === 0 ? (
-                    <tr>
-                      <td colSpan={7}>
-                        <div className="table-empty">
-                          <ShoppingCart size={40} style={{margin:'0 auto 12px', opacity:0.3, display:'block'}} />
-                          No purchase orders found
-                        </div>
-                      </td>
-                    </tr>
-                  ) : filtered.map(o => (
+               {filtered.length === 0 ? (
+  <tr>
+    <td colSpan={7}>
+      <EmptyState
+        image={ilEmptyCart}
+        title="No purchase orders yet"
+        subtitle="Create your first PO to start ordering from suppliers"
+      />
+    </td>
+  </tr>
+) : filtered.map(o => (
                     <tr key={o.id}>
                       <td><span className="po-number">{o.po_number}</span></td>
                       <td className="po-supplier">{o.supplier_name}</td>
@@ -268,9 +271,13 @@ const handleExportPDF = () => {
 
               {/* Mobile */}
               <div className="po-mobile">
-                {filtered.length === 0 ? (
-                  <div className="table-empty">No purchase orders found</div>
-                ) : filtered.map(o => (
+             {filtered.length === 0 ? (
+  <EmptyState
+    image={ilEmptyCart}
+    title="No purchase orders yet"
+    subtitle="Create your first PO to start ordering from suppliers"
+  />
+) : filtered.map(o => (
                   <div key={o.id} className="po-card-m" onClick={() => openDetail(o.id)}>
                     <div className="po-card-m-top">
                       <div>

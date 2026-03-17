@@ -5,6 +5,8 @@ import api from '../services/api'
 import './Users.css'
 import PageTransition from '../components/PageTransition'
 import toast from 'react-hot-toast'
+import EmptyState from '../components/EmptyState'
+import ilNoData from '../assets/il-no-data.svg'
 
 const AVATAR_COLORS = [
   'linear-gradient(135deg,#60a5fa,#2563eb)',
@@ -166,16 +168,17 @@ const handleDelete = async () => {
                 </tr>
               </thead>
               <tbody>
-                {filtered.length === 0 ? (
-                  <tr>
-                    <td colSpan={5}>
-                      <div className="table-empty">
-                        <Users size={40} style={{margin:'0 auto 12px', opacity:0.3, display:'block'}} />
-                        No users found
-                      </div>
-                    </td>
-                  </tr>
-                ) : filtered.map(u => (
+              {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={5}>
+                    <EmptyState
+                      image={ilNoData}
+                      title="No users found"
+                      subtitle="Try a different search keyword"
+                    />
+                  </td>
+                </tr>
+              ) : filtered.map(u => (
                   <tr key={u.id}>
                     <td>
                       <div className="user-cell">
@@ -225,6 +228,13 @@ const handleDelete = async () => {
 
             {/* Mobile */}
             <div className="users-mobile">
+            {filtered.length === 0 && (
+            <EmptyState
+              image={ilNoData}
+              title="No users found"
+              subtitle="Try a different search keyword"
+            />
+          )}
               {filtered.map(u => (
                 <div key={u.id} className="user-card-m">
                   <div className="user-card-m-left">

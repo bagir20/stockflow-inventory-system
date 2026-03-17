@@ -5,6 +5,8 @@ import PageTransition from '../components/PageTransition'
 import api from '../services/api'
 import './Categories.css'
 import toast from 'react-hot-toast'
+import EmptyState from '../components/EmptyState'
+import ilEmpty from '../assets/il-empty.svg'
 
 export default function Suppliers() {
   const [suppliers,    setSuppliers]    = useState([])
@@ -138,9 +140,17 @@ toast.error('Cannot delete — still in use')
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.length === 0 ? (
-                    <tr><td colSpan={6}><div className="table-empty">No suppliers found</div></td></tr>
-                  ) : filtered.map(s => (
+                {filtered.length === 0 ? (
+                  <tr>
+                    <td colSpan={6}>
+                      <EmptyState
+                        image={ilEmpty}
+                        title="No suppliers yet"
+                        subtitle="Add your first supplier to get started"
+                      />
+                    </td>
+                  </tr>
+                ) : filtered.map(s => (
                     <tr key={s.id}>
                       <td className="td-name">{s.name}</td>
                       <td>{s.contact_name || '—'}</td>
@@ -162,6 +172,13 @@ toast.error('Cannot delete — still in use')
 
               {/* Mobile */}
               <div className="cat-mobile">
+                {filtered.length === 0 && (
+                <EmptyState
+                  image={ilEmpty}
+                  title="No suppliers yet"
+                  subtitle="Add your first supplier to get started"
+                />
+              )}
                 {filtered.map(s => (
                   <div key={s.id} className="cat-card-m">
                     <div className="cat-card-m-left">

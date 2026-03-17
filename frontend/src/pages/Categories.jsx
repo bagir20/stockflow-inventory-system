@@ -5,6 +5,8 @@ import PageTransition from '../components/PageTransition'
 import api from '../services/api'
 import './Categories.css'
 import toast from 'react-hot-toast'
+import EmptyState from '../components/EmptyState'
+import ilEmpty from '../assets/il-empty.svg'
 
 export default function Categories() {
   const [categories,   setCategories]   = useState([])
@@ -124,9 +126,17 @@ const handleDelete = async () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.length === 0 ? (
-                    <tr><td colSpan={4}><div className="table-empty">No categories found</div></td></tr>
-                  ) : filtered.map(c => (
+                 {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={4}>
+                    <EmptyState
+                      image={ilEmpty}
+                      title="No categories yet"
+                      subtitle="Create a category to organize your products"
+                    />
+                  </td>
+                </tr>
+              ) : filtered.map(c => (
                     <tr key={c.id}>
                       <td className="td-name">{c.name}</td>
                       <td style={{color:'var(--ink-muted)'}}>{c.description || '—'}</td>
@@ -146,6 +156,13 @@ const handleDelete = async () => {
 
               {/* Mobile */}
               <div className="cat-mobile">
+                {filtered.length === 0 && (
+                <EmptyState
+                  image={ilEmpty}
+                  title="No categories yet"
+                  subtitle="Create a category to organize your products"
+                />
+              )}
                 {filtered.map(c => (
                   <div key={c.id} className="cat-card-m">
                     <div className="cat-card-m-left">
