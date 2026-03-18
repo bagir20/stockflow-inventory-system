@@ -18,6 +18,9 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    console.log('submit triggered, default prevented')
+
     if (!email || !password) return setError('Email and password are required')
     setError('')
     setLoading(true)
