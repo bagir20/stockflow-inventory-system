@@ -13,7 +13,7 @@ const purchaseOrderRoutes = require('./routes/purchaseOrderRoutes')
 const app = express()
 
 app.use(cors({
-  origin: '*',
+origin: 'https://stockflow-inventory-system-psi.vercel.app',
   credentials: true
 }))
 
