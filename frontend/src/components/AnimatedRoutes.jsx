@@ -15,7 +15,7 @@ export default function AnimatedRoutes() {
 
   return (
     <AnimatePresence mode='sync'>
-      <Routes location={location} key={location.pathname}>
+    <Routes location={location}>
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={
           <ProtectedRoute><Dashboard /></ProtectedRoute>
