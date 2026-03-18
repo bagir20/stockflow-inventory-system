@@ -73,7 +73,9 @@ export default function Login() {
 
             {error && <p className="login-error">{error}</p>}
 
-            <button className="login-btn"
+            <button 
+              type="submit"   // ← tambahkan ini
+              className="login-btn"
               disabled={loading || !email || !password}>
               {loading
                 ? <><div className="spinner" /> Signing in...</>
