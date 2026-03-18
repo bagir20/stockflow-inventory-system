@@ -5,6 +5,8 @@ import api from '../services/api'
 import ilLogistics from '../assets/il-logistics.svg'
 import './Login.css'
 import { Eye, EyeOff } from 'lucide-react'
+// tambah import di atas
+import toast from 'react-hot-toast'
 
 export default function Login() {
   const [email,    setEmail]    = useState('')
@@ -25,7 +27,7 @@ export default function Login() {
       localStorage.setItem('user', JSON.stringify(res.data.user))
       navigate('/dashboard')
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed')
+    toast.error(err.response?.data?.error || 'Login failed')
     } finally {
       setLoading(false)
     }
