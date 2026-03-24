@@ -390,12 +390,12 @@ const openScanner = (target) => {
             {/* Mobile */}
             <div className="history-mobile">
               {filteredHistory.length === 0 ? (
-  <EmptyState
-    image={ilNoData}
-    title="No movements found"
-    subtitle="Stock movements will appear here"
-  />
-) : filteredHistory.map(h => (
+            <EmptyState
+              image={ilNoData}
+              title="No movements found"
+              subtitle="Stock movements will appear here"
+            />
+          ) : filteredHistory.map(h => (
                 <div key={h.id} className="history-card-m">
                   <div className="history-card-m-top">
                     <span className="history-card-m-name">{h.product_name}</span>
