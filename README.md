@@ -9,7 +9,7 @@ StockFlow adalah aplikasi manajemen gudang berbasis web yang dirancang untuk mem
 ## Teknologi yang Digunakan
 
 **Backend**
-- Node.js & Express.js — REST API server
+- Node.js & Express.js — React + Vite — antarmuka pengguna yang cepat dan responsif
 - JWT Authentication — proteksi route berbasis token
 - Arsitektur berbasis Middleware — autentikasi, validasi, dan error handling
 
