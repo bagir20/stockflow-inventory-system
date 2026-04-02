@@ -7,7 +7,11 @@ const pool = new Pool({
   }
 })
 
-// test koneksi
+// Set search_path ke schema inventory
+pool.on('connect', (client) => {
+  client.query('SET search_path TO inventory')
+})
+
 pool.connect()
   .then(() => console.log('PostgreSQL connected'))
   .catch(err => console.error('DB connection error:', err.message))
