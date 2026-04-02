@@ -434,14 +434,15 @@ const openScanner = (target) => {
         </div>
       </div>
 
-      {/* QR Scanner */}
+     
+</PageTransition>
+ {/* QR Scanner */}
       {showScanner && (
         <QRScanner
           onResult={handleScanResult}
           onClose={() => setShowScanner(false)}
         />
       )}
-</PageTransition>
     </div>
   )
 }
