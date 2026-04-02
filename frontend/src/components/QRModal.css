@@ -30,10 +30,9 @@
 }
 
 .qr-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  align-items: flex-start;
-  padding-top: 80px;
+  left: 220px; /* exclude sidebar */
 }
 
 .qr-info { text-align: center; }
