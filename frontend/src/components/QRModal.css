@@ -32,7 +32,10 @@
 .qr-overlay {
   position: absolute;
   inset: 0;
+  align-items: flex-start;
+  padding-top: 80px;
 }
+
 .qr-info { text-align: center; }
 .qr-product-name {
   font-family: var(--font-display);
