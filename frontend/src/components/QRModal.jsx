@@ -54,7 +54,7 @@ export default function QRModal({ product, onClose }) {
   }
 
   return (
-    <div className="modal-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
+    <div className="modal-overlay qr-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
       <div className="qr-modal">
         <div className="qr-modal-header">
           <p className="qr-modal-title">QR Code</p>
